@@ -413,7 +413,7 @@ Formats a date as a relative time string (e.g., "5 minutes ago").
 
 ```typescript
 // Recent times
-formatRelativeTime(new Date(Date.now() - 5000));
+formatRelativeTime(new Date(Date.now() - 300000));
 // Returns: "5 minutes ago"
 
 formatRelativeTime(new Date(Date.now() - 3600000));
