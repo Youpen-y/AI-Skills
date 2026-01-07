@@ -58,44 +58,42 @@ Different types require different approaches:
 
 #### API Documentation Template
 
-~~~~markdown
-## functionName
-
-Brief description of what the function does.
-
-### Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `param1` | `string` | Yes | Description of param1 |
-| `param2` | `number` | No | Description of param2. Default: `0` |
-
-> **Note:** Type syntax shown below uses TypeScript format.
-> Adapt to your language: Python (`str`, `int`), Go (`string`, `int`),
-> Rust (`String`, `i32`), etc.
-
-### Returns
-
-`Promise<{ id: string, status: number }>` - Description of return value.
-
-### Throws
-
-- `ValidationError` - When param1 is invalid
-- `NetworkError` - When API call fails
-
-### Example
-
-~~~typescript
-const result = await functionName('value', 42);
-console.log(result.id);
-~~~
-
-### Notes
-
-- Additional context about behavior
-- Performance considerations
-- Dependencies or requirements
-~~~~
+> ## functionName
+>
+> Brief description of what the function does.
+>
+> ### Parameters
+>
+> | Parameter | Type | Required | Description |
+> |-----------|------|----------|-------------|
+> | `param1` | `string` | Yes | Description of param1 |
+> | `param2` | `number` | No | Description of param2. Default: `0` |
+>
+> > **Note:** Type syntax shown below uses TypeScript format.
+> > Adapt to your language: Python (`str`, `int`), Go (`string`, `int`),
+> > Rust (`String`, `i32`), etc.
+>
+> ### Returns
+>
+> `Promise<{ id: string, status: number }>` - Description of return value.
+>
+> ### Throws
+>
+> - `ValidationError` - When param1 is invalid
+> - `NetworkError` - When API call fails
+>
+> ### Example
+>
+> ```typescript
+> const result = await functionName('value', 42);
+> console.log(result.id);
+> ```
+>
+> ### Notes
+>
+> - Additional context about behavior
+> - Performance considerations
+> - Dependencies or requirements
 
 #### Code Comment Guidelines
 
@@ -139,63 +137,65 @@ const value = data?.value ?? default;
 ### 5. Documentation Style
 
 #### Function Documentation
-~~~~typescript
-/**
- * Validates user input against security policies.
- *
- * @param input - The user input string to validate
- * @param options - Validation options
- * @param options.maxLength - Maximum allowed length (default: 1000)
- * @param options.allowSpecialChars - Whether to allow special characters
- * @returns Object with validation result and any error messages
- * @throws {ValidationError} When input format is invalid
- *
- * @example
- * ~~~ts
- * const result = validateInput(userText, { maxLength: 500 });
- * if (!result.valid) {
- *   console.log(result.errors);
- * }
- * ~~~
- */
-function validateInput(input: string, options?: ValidationOptions): ValidationResult
-~~~~
+
+> ```typescript
+> /**
+>  * Validates user input against security policies.
+>  *
+>  * @param input - The user input string to validate
+>  * @param options - Validation options
+>  * @param options.maxLength - Maximum allowed length (default: 1000)
+>  * @param options.allowSpecialChars - Whether to allow special characters
+>  * @returns Object with validation result and any error messages
+>  * @throws {ValidationError} When input format is invalid
+>  *
+>  * @example
+>  * ```ts
+>  * const result = validateInput(userText, { maxLength: 500 });
+>  * if (!result.valid) {
+>  *   console.log(result.errors);
+>  * }
+>  * ```
+>  */
+> function validateInput(input: string, options?: ValidationOptions): ValidationResult
+> ```
 
 #### README Structure
-~~~~markdown
-# Project Name
 
-Brief description (1-2 sentences).
-
-## Features
-- Feature 1
-- Feature 2
-
-## Installation
-~~~bash
-npm install package-name
-~~~
-
-## Quick Start
-~~~typescript
-import { Package } from 'package-name';
-
-const instance = new Package();
-instance.doSomething();
-~~~
-
-## Usage
-Detailed usage examples...
-
-## API Reference
-Link to detailed API docs...
-
-## Contributing
-Guidelines for contributors...
-
-## License
-MIT
-~~~~
+> # Project Name
+>
+> Brief description (1-2 sentences).
+>
+> ## Features
+> - Feature 1
+> - Feature 2
+>
+> ## Installation
+>
+> ```bash
+> npm install package-name
+> ```
+>
+> ## Quick Start
+>
+> ```typescript
+> import { Package } from 'package-name';
+>
+> const instance = new Package();
+> instance.doSomething();
+> ```
+>
+> ## Usage
+> Detailed usage examples...
+>
+> ## API Reference
+> Link to detailed API docs...
+>
+> ## Contributing
+> Guidelines for contributors...
+>
+> ## License
+> MIT
 
 ### 6. Common Documentation Tasks
 

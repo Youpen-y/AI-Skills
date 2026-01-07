@@ -16,25 +16,25 @@ Comprehensive reference guide for writing technical documentation.
 
 ### JSDoc (JavaScript/TypeScript)
 
-~~~~typescript
-/**
- * Brief one-line description.
- *
- * Extended description with more details about the function's
- * purpose, behavior, and any important notes.
- *
- * @param param1 - Description of first parameter
- * @param param2 - Description of second parameter
- * @returns Description of return value
- * @throws {ErrorType} Description of when this error is thrown
- *
- * @example
- * ~~~ts
- * const result = functionName('arg1', 'arg2');
- * ~~~
- */
-function functionName(param1: string, param2: number): boolean
-~~~~
+> ```typescript
+> /**
+>  * Brief one-line description.
+>  *
+>  * Extended description with more details about the function's
+>  * purpose, behavior, and any important notes.
+>  *
+>  * @param param1 - Description of first parameter
+>  * @param param2 - Description of second parameter
+>  * @returns Description of return value
+>  * @throws {ErrorType} Description of when this error is thrown
+>  *
+>  * @example
+>  * ```ts
+>  * const result = functionName('arg1', 'arg2');
+>  * ```
+>  */
+> function functionName(param1: string, param2: number): boolean
+> ```
 
 ### Python Docstrings (PEP 257)
 
@@ -168,75 +168,73 @@ Define and use consistent terminology:
 
 ### README Template
 
-~~~~markdown
-# [Project Name]
-
-[One sentence description of what the project does and who it's for.]
-
-[Optional: 2-3 sentence paragraph with more detail]
-
-## Features
-
-- [Feature 1 - what it does]
-- [Feature 2 - what it does]
-- [Feature 3 - what it does]
-
-## Installation
-
-~~~bash
-# npm
-npm install package-name
-
-# yarn
-yarn add package-name
-
-# pnpm
-pnpm add package-name
-~~~
-
-## Quick Start
-
-~~~typescript
-import { Package } from 'package-name';
-
-const instance = new Package();
-instance.doSomething();
-~~~
-
-## Usage
-
-[Detailed usage examples and explanations]
-
-### Basic Usage
-
-[Example 1]
-
-### Advanced Usage
-
-[Example 2]
-
-## API Reference
-
-[Link to full API docs or summary of main APIs]
-
-## Configuration
-
-[Configuration options and environment variables]
-
-## Contributing
-
-[Link to or include contributing guidelines]
-
-## License
-
-[License name]
-
-## Links
-
-- Documentation: [URL]
-- Changelog: [URL]
-- Issues: [URL]
-~~~~
+> # [Project Name]
+>
+> [One sentence description of what the project does and who it's for.]
+>
+> [Optional: 2-3 sentence paragraph with more detail]
+>
+> ## Features
+>
+> - [Feature 1 - what it does]
+> - [Feature 2 - what it does]
+> - [Feature 3 - what it does]
+>
+> ## Installation
+>
+> ```bash
+> # npm
+> npm install package-name
+>
+> # yarn
+> yarn add package-name
+>
+> # pnpm
+> pnpm add package-name
+> ```
+>
+> ## Quick Start
+>
+> ```typescript
+> import { Package } from 'package-name';
+>
+> const instance = new Package();
+> instance.doSomething();
+> ```
+>
+> ## Usage
+>
+> [Detailed usage examples and explanations]
+>
+> ### Basic Usage
+>
+> [Example 1]
+>
+> ### Advanced Usage
+>
+> [Example 2]
+>
+> ## API Reference
+>
+> [Link to full API docs or summary of main APIs]
+>
+> ## Configuration
+>
+> [Configuration options and environment variables]
+>
+> ## Contributing
+>
+> [Link to or include contributing guidelines]
+>
+> ## License
+>
+> [License name]
+>
+> ## Links
+>
+> - Documentation: [URL]
+> - Changelog: [URL]
+> - Issues: [URL]
 
 ### Changelog Format (Keep a Changelog)
 
@@ -281,30 +279,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### TypeScript Best Practices
 
 1. **Use JSDoc with type information**
-   ~~~~typescript
-   /**
-    * Creates a new user account.
-    *
-    * @template T - Type of user data extension
-    * @param data - User registration data
-    * @param data.email - User email address
-    * @param data.password - User password (min 8 chars)
-    * @returns Promise resolving to created user object
-    *
-    * @example
-    * ~~~ts
-    * const user = await createUser<User & { role: string }>({
-    *   email: 'user@example.com',
-    *   password: 'securepass',
-    *   role: 'admin'
-    * });
-    * ~~~
-    */
-   async function createUser<T extends User>(data: {
-     email: string;
-     password: string;
-   }): Promise<T>
-   ~~~~
+   > ```typescript
+   >  /**
+   >   * Creates a new user account.
+   >   *
+   >   * @template T - Type of user data extension
+   >   * @param data - User registration data
+   >   * @param data.email - User email address
+   >   * @param data.password - User password (min 8 chars)
+   >   * @returns Promise resolving to created user object
+   >   *
+   >   * @example
+   >   * ```ts
+   >   * const user = await createUser<User & { role: string }>({
+   >   *   email: 'user@example.com',
+   >   *   password: 'securepass',
+   >   *   role: 'admin'
+   >   * });
+   >   * ```
+   >   */
+   >   async function createUser<T extends User>(data: {
+   >     email: string;
+   >     password: string;
+   >   }): Promise<T>
+   > ```
 
 2. **Document generic constraints**
    ```typescript

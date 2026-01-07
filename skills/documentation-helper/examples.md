@@ -164,21 +164,21 @@ function processUserData(users) {
  */
 function processUserData(users) {
   // Exclude inactive users to focus on engaged community members
-  const activeUsers = users.filter(user => user.isActive);
+  const active = users.filter(u => u.active);
 
   // Sort by most recent login to prioritize recently active users
-  const sortedByActivity = activeUsers.sort((a, b) =>
-    new Date(b.lastLogin) - new Date(a.lastLogin)
-  );
+  const sorted = active.sort((a, b) => {
+    return new Date(b.lastLogin) - new Date(a.lastLogin);
+  });
 
   // Engagement formula: weighted sum of logins (0.5) and posts (2.0)
   // Posts weighted higher as they indicate more meaningful engagement
-  const withEngagementScores = sortedByActivity.map(user => ({
-    ...user,
-    engagementScore: user.loginCount * 0.5 + user.postCount * 2
-  }));
+  const scored = sorted.map(u => {
+    const score = u.logins * 0.5 + u.posts * 2;
+    return { ...u, score };
+  });
 
-  return withEngagementScores;
+  return scored;
 }
 ```
 
