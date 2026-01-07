@@ -42,15 +42,26 @@ Can you review the code in src/auth.ts?
 
 ```markdown
 ## Summary
-[Brief overview]
+[Brief 1-2 sentence overview of the PR]
 
-## :white_check_mark: Strengths
+## Strengths
 - Positive aspects
 
-## :bug: Issues
-**Critical / High / Medium / Low** priority items
+## Issues
 
-## :thinking: Questions
+### Critical (Must Fix)
+- Critical issues with file:line references
+
+### High Priority (Should Fix)
+- Important issues with explanations
+
+### Medium Priority (Nice to Have)
+- Improvement suggestions
+
+### Low Priority (Optional)
+- Minor improvement suggestions
+
+## Questions
 - Clarifying questions
 
 ## Overall Assessment

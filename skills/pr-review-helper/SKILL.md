@@ -47,26 +47,29 @@ Follow this template for consistent reviews:
 ## Summary
 [Brief 1-2 sentence overview of the PR]
 
-## Highlights
+## Strengths
 - [Positive aspect 1]
 - [Positive aspect 2]
 
-## Issues & Suggestions
+## Issues
 
 ### Critical (Must Fix)
 - [Critical issue with file:line reference]
 
-### Important (Should Fix)
+### High Priority (Should Fix)
 - [Important issue with explanation]
 
-### Nice to Have (Optional)
+### Medium Priority (Nice to Have)
 - [Suggestion with rationale]
+
+### Low Priority (Optional)
+- [Minor improvement suggestion]
 
 ## Questions
 - [Clarifying question about implementation]
 
-## Overall
-[Overall assessment: LGTM / Request Changes / Comments]
+## Overall Assessment
+[LGTM / Approve with changes / Request changes]
 ```
 
 ### 4. Review Best Practices

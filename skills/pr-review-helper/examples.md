@@ -13,14 +13,14 @@ PR adds user login functionality with password authentication.
 ## Summary
 This PR adds user authentication with email/password login, including session management and password reset functionality.
 
-## :white_check_mark: Strengths
+## Strengths
 - Clean separation of auth logic into dedicated service
 - Proper use of bcrypt for password hashing
 - Good error handling for network failures
 
-## :bug: Issues
+## Issues
 
-**Critical**
+### Critical (Must Fix)
 - `auth/login.ts:45` - Password comparison is vulnerable to timing attacks. Use `bcrypt.compare()` instead of direct comparison:
   ```typescript
   // Bad
@@ -32,17 +32,17 @@ This PR adds user authentication with email/password login, including session ma
 
 - `auth/session.ts:23` - Session token stored in localStorage without httpOnly flag. This exposes tokens to XSS. Use httpOnly cookies instead.
 
-**High Priority**
+### High Priority (Should Fix)
 - `auth/login.ts:67` - No rate limiting on login endpoint. This allows brute force attacks. Add rate limiting middleware.
 
-**Medium Priority**
+### Medium Priority (Nice to Have)
 - `auth/types.ts` - Missing password validation rules (length, complexity). Add Zod schema for validation.
 
-## :thinking: Questions
+## Questions
 - Have you considered implementing MFA for additional security?
 - Are there plans to add "remember me" functionality?
 
-## :page_facing_up: Testing Status
+## Testing Status
 - [x] Tests pass
 - [x] New tests added
 - [ ] Coverage adequate (missing error path tests)
@@ -66,14 +66,14 @@ PR refactors data processing pipeline for better performance.
 ## Summary
 This PR refactors the data processing pipeline to use streaming instead of loading all data into memory, reducing memory usage from ~2GB to ~50MB.
 
-## :white_check_mark: Strengths
+## Strengths
 - Excellent performance improvement! 40x memory reduction is significant
 - Well-documented with clear comments explaining the streaming approach
 - Backward compatible API - no breaking changes
 
-## :bug: Issues
+## Issues
 
-**High Priority**
+### High Priority (Should Fix)
 - `pipeline/stream.ts:89` - The stream is not properly closed on error. Add error handling:
   ```typescript
   stream.on('error', (err) => {
@@ -82,14 +82,14 @@ This PR refactors the data processing pipeline to use streaming instead of loadi
   });
   ```
 
-**Medium Priority**
+### Medium Priority (Nice to Have)
 - `pipeline/config.ts` - Consider adding a `concurrency` option to control parallel processing. Current implementation processes all chunks sequentially.
 
-## :thinking: Questions
+## Questions
 - Have you benchmarked with different chunk sizes? 1024 bytes seems arbitrary.
 - Would a worker pool provide additional benefits for CPU-intensive processing?
 
-## :page_facing_up: Testing Status
+## Testing Status
 - [x] Tests pass
 - [x] New tests added
 - [x] Coverage adequate
@@ -113,19 +113,19 @@ Small bug fix with straightforward implementation.
 ## Summary
 This PR fixes the null pointer exception in `getUserById` by adding proper null checking.
 
-## :white_check_mark: Strengths
+## Strengths
 - Minimal, focused change that addresses the issue
 - Good test coverage added for the edge case
 - Clear commit message following conventional commits
 
-## :bug: Issues
+## Issues
 
 None! This is a clean fix.
 
-## :thinking: Questions
+## Questions
 None.
 
-## :page_facing_up: Testing Status
+## Testing Status
 - [x] Tests pass
 - [x] New tests added
 - [x] Coverage adequate
@@ -133,7 +133,7 @@ None.
 ## Overall Assessment
 Straightforward fix for a real bug. Well done!
 
-**Status: LGTM** :shipit:
+**Status: LGTM**
 ```
 
 ---
@@ -149,32 +149,32 @@ PR adds new feature but has opportunities for improvement.
 ## Summary
 This PR adds a new dashboard widget system that allows users to customize their homepage layout.
 
-## :white_check_mark: Strengths
+## Strengths
 - Solid implementation of the core widget functionality
 - Good TypeScript typing throughout
 - Nice use of React Context for state management
 
-## :bug: Issues
+## Issues
 
-**High Priority**
+### High Priority (Should Fix)
 - `widgets/WidgetRegistry.ts:45-67` - This class has too many responsibilities. Consider extracting:
   - Widget validation to `WidgetValidator`
   - Widget persistence to `WidgetStorage`
 
-**Medium Priority**
+### Medium Priority (Nice to Have)
 - `components/Dashboard.tsx:123` - The `useEffect` dependency array is missing `widgetConfig`. This could cause stale closures.
 
 - `utils/helpers.ts` - The function `calculateWidgetPosition` is 80+ lines. Consider breaking into smaller functions for readability.
 
-**Nice to Have**
+### Low Priority (Optional)
 - Consider adding unit tests for the WidgetRegistry class
 - Add JSDoc comments for public API methods
 
-## :thinking: Questions
+## Questions
 - What's the strategy for handling widget updates after initial load? Real-time updates or manual refresh?
 - Have you considered using a grid layout library like react-grid-layout instead of custom positioning?
 
-## :page_facing_up: Testing Status
+## Testing Status
 - [x] Tests pass
 - [x] New tests added
 - [ ] Coverage adequate (missing WidgetRegistry tests)
@@ -198,33 +198,33 @@ PR introduces new REST API endpoints.
 ## Summary
 This PR adds REST API endpoints for user management, including CRUD operations and bulk actions.
 
-## :white_check_mark: Strengths
+## Strengths
 - Consistent API design following REST conventions
 - Good use of HTTP status codes
 - Proper pagination implementation
 
-## :bug: Issues
+## Issues
 
-**Critical**
+### Critical (Must Fix)
 - `api/users.ts:45` - DELETE endpoint returns 200 OK. Should return 204 No Content for successful deletion with no response body.
 
-**High Priority**
+### High Priority (Should Fix)
 - `api/users.ts:89` - No authentication on bulk delete endpoint. This is a data loss risk.
 
-**Medium Priority**
+### Medium Priority (Nice to Have)
 - `api/types.ts` - The API response format is inconsistent. Some endpoints use `{ data, error }` wrapper, others don't. Consider standardizing.
 
 - Missing rate limiting on user creation endpoint.
 
-**Nice to Have**
+### Low Priority (Optional)
 - Consider adding OpenAPI/Swagger documentation
 - Add HATEOAS links for better API discoverability
 
-## :thinking: Questions
+## Questions
 - Why use POST for bulk operations instead of PATCH?
 - Are there plans to add webhook support for user events?
 
-## :page_facing_up: Testing Status
+## Testing Status
 - [x] Tests pass
 - [x] New tests added
 - [x] Coverage adequate
@@ -248,14 +248,14 @@ Junior developer submits first PR to the project.
 ## Summary
 This PR adds the ability to filter products by category in the product listing page.
 
-## :white_check_mark: Strengths
+## Strengths
 - Great first PR! The implementation is clean and follows the project conventions
 - Well-written commit message
 - Tests included for the new functionality
 
-## :bug: Issues
+## Issues
 
-**Medium Priority**
+### Medium Priority (Nice to Have)
 - `products/filter.ts:23` - Consider using `Set` instead of `Array.includes()` for better performance when filtering multiple categories:
   ```typescript
   // Current - O(n*m)
@@ -266,14 +266,14 @@ This PR adds the ability to filter products by category in the product listing p
   const filtered = products.filter(p => categorySet.has(p.category));
   ```
 
-**Nice to Have**
+### Low Priority (Optional)
 - `components/ProductList.tsx:67` - The filter state could be moved to URL params for shareable links. Check out our `useSearchParams` hook for an example.
 
-## :thinking: Questions
+## Questions
 - How did you test this? Manual testing or automated?
 - Any edge cases you considered that aren't covered in tests?
 
-## :page_facing_up: Testing Status
+## Testing Status
 - [x] Tests pass
 - [x] New tests added
 - [x] Coverage adequate
@@ -281,7 +281,7 @@ This PR adds the ability to filter products by category in the product listing p
 ## Overall Assessment
 Excellent work for a first PR! The code is clean and well-tested. The performance suggestion is minor - the code works fine as-is.
 
-**Status: LGTM** :shipit:
+**Status: LGTM**
 
 ---
 
