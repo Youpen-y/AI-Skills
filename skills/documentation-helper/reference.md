@@ -16,7 +16,7 @@ Comprehensive reference guide for writing technical documentation.
 
 ### JSDoc (JavaScript/TypeScript)
 
-```typescript
+~~~~typescript
 /**
  * Brief one-line description.
  *
@@ -29,12 +29,12 @@ Comprehensive reference guide for writing technical documentation.
  * @throws {ErrorType} Description of when this error is thrown
  *
  * @example
- * ```ts
+ * ~~~ts
  * const result = functionName('arg1', 'arg2');
- * ```
+ * ~~~
  */
 function functionName(param1: string, param2: number): boolean
-```
+~~~~
 
 ### Python Docstrings (PEP 257)
 
@@ -168,7 +168,7 @@ Define and use consistent terminology:
 
 ### README Template
 
-```markdown
+~~~~markdown
 # [Project Name]
 
 [One sentence description of what the project does and who it's for.]
@@ -183,7 +183,7 @@ Define and use consistent terminology:
 
 ## Installation
 
-```bash
+~~~bash
 # npm
 npm install package-name
 
@@ -192,16 +192,16 @@ yarn add package-name
 
 # pnpm
 pnpm add package-name
-```
+~~~
 
 ## Quick Start
 
-```typescript
+~~~typescript
 import { Package } from 'package-name';
 
 const instance = new Package();
 instance.doSomething();
-```
+~~~
 
 ## Usage
 
@@ -236,7 +236,7 @@ instance.doSomething();
 - Documentation: [URL]
 - Changelog: [URL]
 - Issues: [URL]
-```
+~~~~
 
 ### Changelog Format (Keep a Changelog)
 
@@ -281,7 +281,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### TypeScript Best Practices
 
 1. **Use JSDoc with type information**
-   ```typescript
+   ~~~~typescript
    /**
     * Creates a new user account.
     *
@@ -292,19 +292,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     * @returns Promise resolving to created user object
     *
     * @example
-    * ```ts
+    * ~~~ts
     * const user = await createUser<User & { role: string }>({
     *   email: 'user@example.com',
     *   password: 'securepass',
     *   role: 'admin'
     * });
-    * ```
+    * ~~~
     */
    async function createUser<T extends User>(data: {
      email: string;
      password: string;
    }): Promise<T>
-   ```
+   ~~~~
 
 2. **Document generic constraints**
    ```typescript

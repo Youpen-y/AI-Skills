@@ -58,7 +58,7 @@ Different types require different approaches:
 
 #### API Documentation Template
 
-```markdown
+~~~~markdown
 ## functionName
 
 Brief description of what the function does.
@@ -85,17 +85,17 @@ Brief description of what the function does.
 
 ### Example
 
-```typescript
+~~~typescript
 const result = await functionName('value', 42);
 console.log(result.id);
-```
+~~~
 
 ### Notes
 
 - Additional context about behavior
 - Performance considerations
 - Dependencies or requirements
-```
+~~~~
 
 #### Code Comment Guidelines
 
@@ -139,7 +139,7 @@ const value = data?.value ?? default;
 ### 5. Documentation Style
 
 #### Function Documentation
-```typescript
+~~~~typescript
 /**
  * Validates user input against security policies.
  *
@@ -151,18 +151,18 @@ const value = data?.value ?? default;
  * @throws {ValidationError} When input format is invalid
  *
  * @example
- * ```ts
+ * ~~~ts
  * const result = validateInput(userText, { maxLength: 500 });
  * if (!result.valid) {
  *   console.log(result.errors);
  * }
- * ```
+ * ~~~
  */
 function validateInput(input: string, options?: ValidationOptions): ValidationResult
-```
+~~~~
 
 #### README Structure
-```markdown
+~~~~markdown
 # Project Name
 
 Brief description (1-2 sentences).
@@ -172,17 +172,17 @@ Brief description (1-2 sentences).
 - Feature 2
 
 ## Installation
-```bash
+~~~bash
 npm install package-name
-```
+~~~
 
 ## Quick Start
-```typescript
+~~~typescript
 import { Package } from 'package-name';
 
 const instance = new Package();
 instance.doSomething();
-```
+~~~
 
 ## Usage
 Detailed usage examples...
@@ -195,7 +195,7 @@ Guidelines for contributors...
 
 ## License
 MIT
-```
+~~~~
 
 ### 6. Common Documentation Tasks
 
