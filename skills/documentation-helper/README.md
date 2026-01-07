@@ -30,6 +30,24 @@ Create a README for this project
 Improve the documentation in this file
 ```
 
+**More specific examples:**
+
+```
+Document this API endpoint with parameters and return types
+```
+
+```
+Add JSDoc comments to this TypeScript file
+```
+
+```
+Write a migration guide for the v2 to v3 API changes
+```
+
+```
+Create architecture documentation for the payment service
+```
+
 ## Documentation Types
 
 | Type | Purpose | Audience |

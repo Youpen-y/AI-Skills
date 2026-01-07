@@ -447,6 +447,11 @@ formatRelativeTime(new Date(Date.now() - 3600000), new Date(), 'es');
 ### Context
 Documenting a breaking API change.
 
+> **Why this matters:** Breaking changes can frustrate users and erode trust.
+> A well-written migration guide transforms a painful upgrade into a
+> smooth transition, showing users you respect their time and investment.
+> Good migration docs reduce support burden and demonstrate professionalism.
+
 ### Documentation
 
 ```markdown

@@ -70,6 +70,10 @@ Brief description of what the function does.
 | `param1` | `string` | Yes | Description of param1 |
 | `param2` | `number` | No | Description of param2. Default: `0` |
 
+> **Note:** Type syntax shown below uses TypeScript format.
+> Adapt to your language: Python (`str`, `int`), Go (`string`, `int`),
+> Rust (`String`, `i32`), etc.
+
 ### Returns
 
 `Promise<{ id: string, status: number }>` - Description of return value.
