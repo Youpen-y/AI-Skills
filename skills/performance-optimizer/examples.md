@@ -378,34 +378,40 @@ function processLargeFile(inputPath, outputPath) {
 
 **After:**
 ```javascript
+const { pipeline } = require('stream/promises');
 const fs = require('fs');
-const readline = require('readline');
 
 async function processLargeFile(inputPath, outputPath) {
-  // Use streams to avoid loading entire file
+  // Use pipeline for automatic backpressure handling
   const readStream = fs.createReadStream(inputPath);
   const writeStream = fs.createWriteStream(outputPath);
 
-  const rl = readline.createInterface({
-    input: readStream,
-    crlfDelay: Infinity
+  // Create transform stream
+  const { Transform } = require('stream');
+  const transformStream = new Transform({
+    transform(chunk, encoding, callback) {
+      const line = chunk.toString();
+      const processed = transformLine(line);
+      callback(null, processed + '\n');
+    }
   });
 
-  for await (const line of rl) {
-    const processed = transformLine(line);
-    writeStream.write(processed + '\n');
-  }
-
-  writeStream.end();
+  // pipeline automatically handles backpressure and errors
+  await pipeline(
+    readStream,
+    transformStream,
+    writeStream
+  );
 }
 
 // Processing 1GB file:
-// Memory usage: ~10MB (only current line in memory)
+// Memory usage: ~10MB (only current chunk in memory)
 // Runs successfully
 
-// Note: For production use with high-volume streams,
-// handle backpressure by checking write() return value
-// and waiting for the 'drain' event when buffer is full.
+// pipeline() automatically handles:
+// - Backpressure (pauses reads when writes are slow)
+// - Error propagation (closes streams on error)
+// - Cleanup (destroys streams on completion)
 ```
 
 **Result:** Memory usage: 2GB → 10MB (200x reduction)

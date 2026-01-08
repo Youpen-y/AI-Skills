@@ -46,14 +46,6 @@ stats = pstats.Stats(profiler)
 stats.sort_stats('cumulative').print_stats(20)
 ```
 
-```go
-// Go - pprof
-import _ "net/http/pprof"
-
-// Then visit http://localhost:6060/debug/pprof/
-// Or: go tool pprof http://localhost:6060/debug/pprof/profile
-```
-
 ### 2. Common Bottlenecks
 
 | Category | Typical Issues | Detection |
